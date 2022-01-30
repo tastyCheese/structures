@@ -1,5 +1,4 @@
 class SegmentTree(object):
-
     def __init__(self, source_list):
         self.__length = len(source_list)
         self.__tree = [0 for _ in range(self.__length << 2)]
@@ -34,8 +33,8 @@ class SegmentTree(object):
                 self.__update((vertex << 1) + 1, middle + 1, right, upd_vertex, new_value)
             self.__tree[vertex] = self.__tree[vertex << 1] + self.__tree[(vertex << 1) + 1]
 
-    def sum(self, left, right):
+    def sum(self, left: int, right: int):
         return self.__sum(1, 0, self.__length - 1, left, right)
 
-    def update(self, upd_vertex, new_value):
-        self.__update(1, 0, self.__length - 1, upd_vertex, new_value)
+    def update(self, vertex: int, new_value):
+        self.__update(1, 0, self.__length - 1, vertex, new_value)
