@@ -6,17 +6,23 @@ l, r = list(map(int, input('Границы: ').split()))
 tree = SegmentTree(a)
 print('Сумма: ', tree.sum(l, r))
 
-from BFS import bfs
+"""
+from dijkstra import dijkstra
 
 n = int(input('Количество вершин: '))
-print('Граф:')
 g = []
-for _ in range(n):
-    g.append(list(map(int, input().split())))
+for i in range(n):
+    e = int(input('Количество рёбер вершины ' + str(i) + ': '))
+    edges = []
+    print('Рёбра и веса:')
+    for _ in range(e):
+        edges.append(list(map(int, input().split())))
+    g.append(edges)
 s, f = list(map(int, input('Начальная и конечная точки: ').split()))
-path = bfs(g, s, f)
+path = dijkstra(g, s, f)
+print('Расстояние:', path[0])
 print('Путь:', end=' ')
-for i in range(len(path)):
-    print(path[i], end=' ')
-"""
+for i in range(len(path[1])):
+    print(path[1][i], end=' ')
+
 
